@@ -67,3 +67,11 @@ button {
 .cards button:hover {
   background-color: var(--bg-card-color-transition);
 }
+
+.cards .press {
+  background-color: var(--bg-card-color-transition);
+}
+
+.press svg path {
+  fill: var(--bg-card-color); /* Defina a cor desejada aqui */
+}
