@@ -55,5 +55,6 @@ export function Timer({ displayMinutes, displaySeconds, minutes, seconds, timeSe
     clearInterval(timeSet);
     isRunning = false;
   }
+
   return { addFiveMinutes, removeFiveMinutes, updateTime, stopTime };
 }

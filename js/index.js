@@ -15,6 +15,10 @@ const forestCard = document.querySelector("#forest-card");
 const rainCard = document.querySelector("#rain-card");
 const coffeeCard = document.querySelector("#coffee-shop-card");
 const firePlaceCard = document.querySelector("#fireplace-card");
+const forestCardSound = new Audio("./sounds/forest.wav");
+const rainCardSound = new Audio("./sounds/rain.wav");
+const coffeCardSound = new Audio("./sounds/coffe.wav");
+const firePlaceCardSound = new Audio("./sounds/fireplace.wav");
 
 const timer = Timer({
   displayMinutes,
@@ -25,7 +29,16 @@ const timer = Timer({
   isRunning,
 });
 
-const sound = Sound();
+const sound = Sound({ forestCardSound, rainCardSound, coffeCardSound, firePlaceCardSound });
+
+function addClassPress(card) {
+  if (card.classList.contains("press")) {
+    removeClassPressFromAll();
+  } else {
+    removeClassPressFromAll();
+    card.classList.add("press");
+  }
+}
 
 buttonAddFiveMinutesButton.addEventListener("click", timer.addFiveMinutes);
 buttonremoveFiveMinutesButton.addEventListener("click", timer.removeFiveMinutes);
@@ -33,21 +46,28 @@ buttonPlay.addEventListener("click", timer.updateTime);
 buttonStop.addEventListener("click", timer.stopTime);
 
 forestCard.addEventListener("click", function () {
-  forestCard.classList.toggle("press");
-  sound.playForestSounds();
+  addClassPress(forestCard);
+  sound.playSounds(forestCardSound, forestCard);
 });
 
 rainCard.addEventListener("click", function () {
-  rainCard.classList.toggle("press");
-  sound.playRainSounds();
+  addClassPress(rainCard);
+  sound.playSounds(rainCardSound, rainCard);
 });
 
 coffeeCard.addEventListener("click", function () {
-  coffeeCard.classList.toggle("press");
-  sound.playCoffeSounds();
+  addClassPress(coffeeCard);
+  sound.playSounds(coffeCardSound, coffeeCard);
 });
 
 firePlaceCard.addEventListener("click", function () {
-  firePlaceCard.classList.toggle("press");
-  sound.playfirePlaceSounds();
+  addClassPress(firePlaceCard);
+  sound.playSounds(firePlaceCardSound, firePlaceCard);
 });
+
+function removeClassPressFromAll() {
+  forestCard.classList.remove("press");
+  rainCard.classList.remove("press");
+  coffeeCard.classList.remove("press");
+  firePlaceCard.classList.remove("press");
+}

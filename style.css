@@ -73,5 +73,5 @@ button {
 }
 
 .press svg path {
-  fill: var(--bg-card-color); /* Defina a cor desejada aqui */
+  fill: var(--bg-card-color);
 }
